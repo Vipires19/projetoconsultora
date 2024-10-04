@@ -15,6 +15,7 @@ def hash_passwords(password):
 if __name__ == "__main__":
 
   name = ["Admin"]
+  email = ['admin@gmail.com']
   username = ["admin"]
   passwords = ["admin123"]
 
