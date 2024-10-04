@@ -2,7 +2,6 @@ openpyxl
 pandas
 plotly
 streamlit
-pickle
 pathlib 
 pymongo 
 urllib
