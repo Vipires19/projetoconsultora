@@ -24,6 +24,7 @@ with file_path.open("rb") as file:
 credentials = {
     "usernames": {
         "admin": {
+            "email": 'admin@gmail.com',
             "name": "Admin",
             "password": hashed_passwords[0]
         }
@@ -184,6 +185,9 @@ def pagina_principal():
     st.title('Nome Limpo Agora')
     st.divider()
     st.header('*Painel de Atendimento*')
+    btn = authenticator.logout()
+    if btn:
+        st.session_state["authentication_status"] == None
     
     clientes()
     despesas()
