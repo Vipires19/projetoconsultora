@@ -2,12 +2,10 @@ openpyxl
 pandas
 plotly
 streamlit
-streamlit-authenticator
 pickle
 pathlib 
 pymongo 
 urllib
 urllib.parse
-datetime
 xlsxwriter
 io
