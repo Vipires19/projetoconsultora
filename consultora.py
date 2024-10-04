@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import pickle
-import streamlit_authenticator as stauth
 from pathlib import Path
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
