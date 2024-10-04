@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import pickle
 from pathlib import Path
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
@@ -10,25 +9,8 @@ from datetime import datetime
 
 st.set_page_config(
             layout =  'wide',
-            page_title = 'Consultora do neto',
+            page_title = 'Nome Limpo Agora',
         )
-
-#file_path = Path(__file__).parent/"db"/"hashed_pw.pkl"
-
-#with file_path.open("rb") as file:
-#  hashed_passwords = pickle.load(file)
-
-#credentials = {
-#    "usernames": {
-#        "admin": {
-#            "name": "Admin",
-#            "password": hashed_passwords[0]
-#        }
-#    }
-#}
-
-#authenticator = stauth.Authenticate(credentials= credentials, cookie_name="st_session", cookie_key="key123", cookie_expiry_days= 1)
-#authenticator.login()
 
 mongo_user = st.secrets['MONGO_USER']
 mongo_pass = st.secrets["MONGO_PASS"]
