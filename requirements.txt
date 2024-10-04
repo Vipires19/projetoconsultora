@@ -4,7 +4,7 @@ plotly
 streamlit
 pathlib 
 pymongo 
-urllib
+
 urllib.parse
 xlsxwriter
 io
