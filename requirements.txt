@@ -6,7 +6,6 @@ streamlit-authenticator
 pickle
 pathlib 
 pymongo 
-pymongo.server_api
 urllib
 urllib.parse
 datetime
