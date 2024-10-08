@@ -197,7 +197,7 @@ def pagina_principal():
         col3.image('files/Tutorial 07.png')
         col3.image('files/Tutorial 08.png')
         col3.image('files/Tutorial 09.png')
-        col3.header('Whats para envio do relatório','https://wa.me/5516994401018')
+        col3.link_button('Whats para envio do relatório','https://wa.me/5516994401018')
 
     st.divider()
     upload_bd()  
