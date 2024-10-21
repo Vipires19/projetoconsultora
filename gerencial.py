@@ -10,9 +10,9 @@ import urllib.parse
 from datetime import datetime
 #import xlsxwriter
 #import io
-import os
-os.environ['DISPLAY'] = ':10.0'
-import pyautogui
+#import os
+#os.environ['DISPLAY'] = ':10.0'
+
 
 st.set_page_config(
             layout =  'wide',
@@ -107,6 +107,7 @@ def exibindo_cliente():
         st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
         salvar_imagem = st.button('Confirmar')
         if salvar_imagem:
+            import pyautogui
             minha_imagem = pyautogui.screenshot()
             minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
             printsc = ('files/despesa.jpg')
@@ -124,6 +125,7 @@ def exibindo_cliente():
         col3.metric('Total a pagar',f'R$ {total_pg:,.2f}')
         salvar_imagem = st.button('Confirmar')
         if salvar_imagem:
+            import pyautogui
             minha_imagem = pyautogui.screenshot()
             minha_imagem.save(Path(__file__).parent/"files"/'dividas.jpg')
             printsc = ('files/dividas.jpg')
