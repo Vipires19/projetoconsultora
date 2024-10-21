@@ -4,4 +4,4 @@ plotly
 streamlit
 pathlib 
 pymongo 
-xlsxwriter
+pyautogui
