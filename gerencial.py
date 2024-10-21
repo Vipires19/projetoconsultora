@@ -10,6 +10,7 @@ import urllib.parse
 from datetime import datetime
 #import xlsxwriter
 #import io
+xhost +local:$USER > /dev/null
 
 st.set_page_config(
             layout =  'wide',
