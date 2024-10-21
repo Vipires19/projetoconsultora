@@ -11,7 +11,7 @@ from datetime import datetime
 #import xlsxwriter
 #import io
 import os
-os.environ['DISPLAY'] = :0
+os.environ['DISPLAY'] = 0
 import pyautogui
 
 st.set_page_config(
