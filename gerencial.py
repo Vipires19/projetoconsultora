@@ -10,9 +10,6 @@ import urllib.parse
 from datetime import datetime
 #import xlsxwriter
 #import io
-#import os
-#os.environ['DISPLAY'] = ':10.0'
-
 
 st.set_page_config(
             layout =  'wide',
@@ -108,6 +105,8 @@ def exibindo_cliente():
         salvar_imagem = st.button('Confirmar')
         if salvar_imagem:
             import pyautogui
+            import os
+            os.environ['DISPLAY'] = ':0'            
             minha_imagem = pyautogui.screenshot()
             minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
             printsc = ('files/despesa.jpg')
