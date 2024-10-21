@@ -4,4 +4,4 @@ plotly
 streamlit
 streamlit-authenticator == 0.3.3
 pymongo 
-xlsxwriter
+pyautogui
