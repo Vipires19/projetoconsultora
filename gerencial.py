@@ -104,9 +104,9 @@ def exibindo_cliente():
         st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
         salvar_imagem = st.button('Confirmar')
         if salvar_imagem:
-            import pyautogui
             import os
-            os.environ['DISPLAY'] = ':0'            
+            os.environ['DISPLAY'] = ':0'
+            import pyautogui
             minha_imagem = pyautogui.screenshot()
             minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
             printsc = ('files/despesa.jpg')
