@@ -8,8 +8,9 @@ from pymongo.server_api import ServerApi
 import urllib
 import urllib.parse
 from datetime import datetime
-import xlsxwriter
-import io
+#import xlsxwriter
+#import io
+import pyautogui
 
 st.set_page_config(
             layout =  'wide',
@@ -96,37 +97,51 @@ def exibindo_cliente():
     col3.metric('CEP', cep)
 
     st.divider()
-    col1,col2 = st.columns(2)
-    col1.header('Despesas mensais')
-    col1.dataframe(df_desp)
-    col2.header('Organização de Dívidas pessoais')
-    col2.dataframe(df_dividas)
+    select = st.selectbox('Selecione', ('Despesas mensais', 'Organização de dívidas pessoais'))
+    if select == 'Despesas mensais':
+        st.header('Despesas mensais')
+        st.dataframe(df_desp)
+        total_desp = total_desp_df[total_desp_df['Cliente'] == cliente]['Total despesas'].value_counts().index[0]
+        st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
+        salvar_imagem = st.button('Confirmar')
+        if salvar_imagem:
+            minha_imagem = pyautogui.screenshot()
+            minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
+            printsc = ('files/despesa.jpg')
+            st.image(printsc)
 
-    total_desp = total_desp_df[total_desp_df['Cliente'] == cliente]['Total despesas'].value_counts().index[0]
-    col1.metric('Total de despesas', f'R$ {total_desp:,.2f}')
-    
-    data1 = df_desp
-    output = io.BytesIO()
-    writer = pd.ExcelWriter(output, engine="xlsxwriter")
-    data1.to_excel(writer, index=False, sheet_name="sheet1")
-    writer.close()
-    data_bytes = output.getvalue()
-    
-    col1.download_button("Download Excel", data = data_bytes, file_name= f"Despesas_mensais_{cliente}.xlsx")
-    total_atraso = total_div_df[total_div_df['Cliente'] == cliente]['Total em atraso'].value_counts().index[0]
-    total_pagar = total_div_df[total_div_df['Cliente'] == cliente]['Total Valor a pagar'].value_counts().index[0]
-    total_pg = total_div_df[total_div_df['Cliente'] == cliente]['Total a pagar'].value_counts().index[0]
-    col2.metric('Total em atraso',f'R$ {total_atraso:,.2f}')
-    col2.metric('Total Valor a pagar',f'R$ {total_pagar:,.2f}')
-    col2.metric('Total a pagar',f'R$ {total_pg:,.2f}')
+    if select == 'Organização de dívidas pessoais':
+        st.header('Organização de Dívidas pessoais')
+        st.dataframe(df_dividas)
+        total_atraso = total_div_df[total_div_df['Cliente'] == cliente]['Total em atraso'].value_counts().index[0]
+        total_pagar = total_div_df[total_div_df['Cliente'] == cliente]['Total Valor a pagar'].value_counts().index[0]
+        total_pg = total_div_df[total_div_df['Cliente'] == cliente]['Total a pagar'].value_counts().index[0]
+        col1,col2,col3 = st.columns(3)
+        col1.metric('Total em atraso',f'R$ {total_atraso:,.2f}')
+        col2.metric('Total Valor a pagar',f'R$ {total_pagar:,.2f}')
+        col3.metric('Total a pagar',f'R$ {total_pg:,.2f}')
+        salvar_imagem = st.button('Confirmar')
+        if salvar_imagem:
+            minha_imagem = pyautogui.screenshot()
+            minha_imagem.save(Path(__file__).parent/"files"/'dividas.jpg')
+            printsc = ('files/dividas.jpg')
+            st.image(printsc)
 
-    data1 = df_dividas
-    output = io.BytesIO()
-    writer = pd.ExcelWriter(output, engine="xlsxwriter")
-    data1.to_excel(writer, index=False, sheet_name="sheet1")
-    writer.close()
-    data_bytes = output.getvalue()
-    col2.download_button("Download Excel", data = data_bytes, file_name= f"organizacao_dividas_{cliente}.xlsx")
+    #data1 = df_desp
+    #output = io.BytesIO()
+    #writer = pd.ExcelWriter(output, engine="xlsxwriter")
+    #data1.to_excel(writer, index=False, sheet_name="sheet1")
+    #writer.close()
+    #data_bytes = output.getvalue()
+    #col1.download_button("Download Excel", data = data_bytes, file_name= f"Despesas_mensais_{cliente}.xlsx")
+
+    #data1 = df_dividas
+    #output = io.BytesIO()
+    #writer = pd.ExcelWriter(output, engine="xlsxwriter")
+    #data1.to_excel(writer, index=False, sheet_name="sheet1")
+    #writer.close()
+    #data_bytes = output.getvalue()
+    #col2.download_button("Download Excel", data = data_bytes, file_name= f"organizacao_dividas_{cliente}.xlsx")
 
     st.divider()
 
