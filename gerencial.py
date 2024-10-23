@@ -103,7 +103,7 @@ def exibindo_cliente():
         st.dataframe(df_desp)
         total_desp = total_desp_df[total_desp_df['Cliente'] == cliente]['Total despesas'].value_counts().index[0]
         st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
-        salvar_imagem = st.button('Confirmar')
+        #salvar_imagem = st.button('Confirmar')
         #if salvar_imagem:
             #minha_imagem = pyautogui.screenshot()
             #minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
