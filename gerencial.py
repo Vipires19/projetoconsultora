@@ -10,7 +10,7 @@ import urllib.parse
 from datetime import datetime
 #import xlsxwriter
 #import io
-import pyautogui
+#import pyautogui
 
 st.set_page_config(
             layout =  'wide',
@@ -104,11 +104,11 @@ def exibindo_cliente():
         total_desp = total_desp_df[total_desp_df['Cliente'] == cliente]['Total despesas'].value_counts().index[0]
         st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
         salvar_imagem = st.button('Confirmar')
-        if salvar_imagem:
-            minha_imagem = pyautogui.screenshot()
-            minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
-            printsc = ('files/despesa.jpg')
-            st.image(printsc)
+        #if salvar_imagem:
+            #minha_imagem = pyautogui.screenshot()
+            #minha_imagem.save(Path(__file__).parent/"files"/'despesa.jpg')
+            #printsc = ('files/despesa.jpg')
+            #st.image(printsc)
 
     if select == 'Organização de dívidas pessoais':
         st.header('Organização de Dívidas pessoais')
@@ -120,12 +120,12 @@ def exibindo_cliente():
         col1.metric('Total em atraso',f'R$ {total_atraso:,.2f}')
         col2.metric('Total Valor a pagar',f'R$ {total_pagar:,.2f}')
         col3.metric('Total a pagar',f'R$ {total_pg:,.2f}')
-        salvar_imagem = st.button('Confirmar')
-        if salvar_imagem:
-            minha_imagem = pyautogui.screenshot()
-            minha_imagem.save(Path(__file__).parent/"files"/'dividas.jpg')
-            printsc = ('files/dividas.jpg')
-            st.image(printsc)
+        #salvar_imagem = st.button('Confirmar')
+        #if salvar_imagem:
+            #minha_imagem = pyautogui.screenshot()
+            #minha_imagem.save(Path(__file__).parent/"files"/'dividas.jpg')
+            #printsc = ('files/dividas.jpg')
+            #st.image(printsc)
 
     #data1 = df_desp
     #output = io.BytesIO()
