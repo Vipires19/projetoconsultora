@@ -100,7 +100,7 @@ def exibindo_cliente():
     select = st.selectbox('Selecione', ('Despesas mensais', 'Organização de dívidas pessoais'))
     if select == 'Despesas mensais':
         st.header('Despesas mensais')
-        st.dataframe(df_desp)
+        st.data_editor(df_desp)
         total_desp = total_desp_df[total_desp_df['Cliente'] == cliente]['Total despesas'].value_counts().index[0]
         st.metric('Total de despesas', f'R$ {total_desp:,.2f}')
         #salvar_imagem = st.button('Confirmar')
@@ -112,7 +112,7 @@ def exibindo_cliente():
 
     if select == 'Organização de dívidas pessoais':
         st.header('Organização de Dívidas pessoais')
-        st.dataframe(df_dividas)
+        st.data_editor(df_dividas)
         total_atraso = total_div_df[total_div_df['Cliente'] == cliente]['Total em atraso'].value_counts().index[0]
         total_pagar = total_div_df[total_div_df['Cliente'] == cliente]['Total Valor a pagar'].value_counts().index[0]
         total_pg = total_div_df[total_div_df['Cliente'] == cliente]['Total a pagar'].value_counts().index[0]
